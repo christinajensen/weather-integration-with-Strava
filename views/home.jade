@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-html(lang="en")
-head
-  meta(charset="UTF-8")
+extends ./layout.jade
+
+block head
   title Home
-body
-  h1 Welcome to the home page
-  
+
+block css
+  link(rel="stylesheet" href="/stylesheets/home.css")
+
+block content
+  h1 Welcome to home.jade
