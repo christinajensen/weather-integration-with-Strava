@@ -1,0 +1,33 @@
+{
+  "name": "capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "knex": "^0.11.7",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "pg": "^6.0.2",
+    "strava-v3": "^1.12.1"
+  },
+  "devDependencies": {
+    "locus": "^1.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christinajensen/capstone-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christinajensen/capstone-project/issues"
+  },
+  "homepage": "https://github.com/christinajensen/capstone-project#readme"
+}
