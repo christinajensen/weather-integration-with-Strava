@@ -7,9 +7,7 @@ module.exports = {
     connection: {
       database: 'dryride_db'
     },
-    debug: { 
-      true
-    },
+    debug: true,
     pool: {
       min: 1,
       max: 1
