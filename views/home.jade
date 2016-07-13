@@ -5,6 +5,25 @@ block head
 
 block css
   link(rel="stylesheet" href="/stylesheets/home.css")
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css')
 
 block content
-  h1 Welcome to home.jade
+  header 
+    a(href="/")
+      h1 dryride
+      //- img(src="/images/dryride-logo copy.png", alt="dryride logo")
+    nav
+      ul
+        li
+          a(href="#") CONTACT
+        li
+          a(href="#") ABOUT
+        li 
+          a(href="#") TRY IT OUT!
+        li
+          a(href="/") HOME
+  article
+    h1 some header
+    section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod officia, minima molestias, voluptates pariatur rerum consectetur, impedit atque eos culpa, iste asperiores quibusdam tenetur quasi vitae illum libero saepe neque.
+  footer
+    p By Christina Jensen | &copy Copyright 2016

@@ -1,3 +1,51 @@
-h1 {
-  color: blue;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+/*  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;;
+}
+
+header {
+  background-image: url('/images/women-cycling.jpg');
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+header a h1 {
+  float: left;
+  color: black;
+  padding: 20px;
+}
+
+header nav ul {
+  list-style-type: none;
+}
+
+header nav ul li a {
+  display: inline;
+  float: right;
+  text-decoration: none;
+  color: black;
+  font-size: 13px;
+  padding: 20px;
+  z-index: 100px;
+}
+
+article section {
+  background-color: white;
+  height: 400px;
+} 
+
+footer {
+  background-color: black;
+  text-align: center;
+  color: white;
+  height: 80px;
 }
