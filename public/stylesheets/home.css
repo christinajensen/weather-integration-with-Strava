@@ -15,11 +15,10 @@
 }
 
 .hero-img {
-  background-image: url('/images/women-cycling.jpg');
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0)), url('/images/women-cycling.jpg') no-repeat;
   background-size: cover;
   position: relative;
   height: 95vh;
-  background-repeat: no-repeat;
 }
 
 header {
@@ -31,8 +30,12 @@ header {
   transition: all 0.25s ease;
 }
 
+/*-----navbar----*/
+
 #top-nav.past-heroImg{
   background-color: white;
+  padding-top: 0;
+  transition: all 0.25s ease;
 }
 
 #top-nav {
@@ -67,18 +70,22 @@ header {
   color: black;
 }
 
-#logo {
-/*  text-align: center;
+/*------logo-----*/
+
+/*#logo {
+  text-align: center;
   font-size: 60px;
   margin: 0;
   margin-top: -20px;
   padding-left: 60px;
-  padding-right: 60px;*/
-}
+  padding-right: 60px;
+}*/
 
 #logo.past-heroImg {
   color: black;
 }
+
+/*-----next section------*/
 
 article h1 {
   padding-top: 40px;
