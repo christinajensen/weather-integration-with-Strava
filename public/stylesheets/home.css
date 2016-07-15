@@ -1,51 +1,103 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 * {
-/*  margin-top: 15px;
-  margin-left: 10px;
-  margin-right: 10px;*/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;;
+  /*border: 1px solid black;*/
 }
 
-header {
+.wrapper {
+  margin-top: 35px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.hero-img {
   background-image: url('/images/women-cycling.jpg');
   background-size: cover;
   position: relative;
-  height: 100vh;
+  height: 95vh;
   background-repeat: no-repeat;
 }
 
-header a h1 {
-  float: left;
-  color: black;
-  padding: 20px;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+  transition: all 0.25s ease;
 }
 
-header nav ul {
+#top-nav.past-heroImg{
+  background-color: white;
+}
+
+#top-nav {
+  margin: auto;
+  text-align: center;
+  padding-top: 40px;
+}
+
+#top-nav ul {
   list-style-type: none;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
 }
 
-header nav ul li a {
-  display: inline;
-  float: right;
-  text-decoration: none;
-  color: black;
-  font-size: 13px;
+#top-nav ul li {
+  float: left;
   padding: 20px;
-  z-index: 100px;
+  width: 20%;
+}
+
+#top-nav ul li a {
+  display: block;
+  padding: 17px 15px 0 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#top-nav ul li a.past-heroImg {
+  color: black;
+}
+
+#logo {
+/*  text-align: center;
+  font-size: 60px;
+  margin: 0;
+  margin-top: -20px;
+  padding-left: 60px;
+  padding-right: 60px;*/
+}
+
+#logo.past-heroImg {
+  color: black;
+}
+
+article h1 {
+  padding-top: 40px;
+  text-align: center;
+  background-color: lightgrey;
 }
 
 article section {
-  background-color: white;
-  height: 400px;
+  padding-top: 10px;
+  text-align: center;
+  background-color: lightgrey;
+  height: 600px;
 } 
 
 footer {
-  background-color: black;
+  height: 200px;
+  background-color: white;
   text-align: center;
-  color: white;
-  height: 80px;
+  vertical-align: middle;
+  line-height: 79px;
+  color: black;
 }

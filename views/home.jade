@@ -8,22 +8,28 @@ block css
   link(href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css')
 
 block content
-  header 
-    a(href="/")
-      h1 dryride
-      //- img(src="/images/dryride-logo copy.png", alt="dryride logo")
-    nav
+  header
+    nav#top-nav
       ul
         li
           a(href="#") CONTACT
         li
-          a(href="#") ABOUT
-        li 
           a(href="#") TRY IT OUT!
         li
+          a(href="/")#logo DRYRIDE
+        li 
+          a(href="#") ABOUT
+        li
           a(href="/") HOME
-  article
-    h1 some header
-    section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod officia, minima molestias, voluptates pariatur rerum consectetur, impedit atque eos culpa, iste asperiores quibusdam tenetur quasi vitae illum libero saepe neque.
-  footer
-    p By Christina Jensen | &copy Copyright 2016
+  div.wrapper
+    section.hero-img
+    article.article
+      h1 some header
+      section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod officia, minima molestias, voluptates pariatur rerum consectetur, impedit atque eos culpa, iste asperiores quibusdam tenetur quasi vitae illum libero saepe neque.
+    footer
+      p
+        //- #[small Proudly Made in San Francisco, CA]
+        #[small &copy Copyright 2016 | Site by Christina Jensen]
+
+block scripts
+  script(src="/javascripts/home.js")
