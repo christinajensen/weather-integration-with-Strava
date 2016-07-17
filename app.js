@@ -18,20 +18,14 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
+app.use('/forecasts', routes.forecasts);
+
 app.get('*', (req, res) => {
   res.status(404).render('error');
 });
 
 app.listen(3000, () => console.log("Server starting on port 3000"));
 
-// API Call Example
-// const strava = require('strava-v3');
-
-// strava.athlete.get({id:12364},function(err,payload) {
-//   if(!err) {
-//       console.log(payload);
-//   }
-//   else {
-//       console.log(err);
-//   }
-// });
+module.exports = {
+  app
+};
