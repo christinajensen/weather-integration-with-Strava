@@ -8,6 +8,8 @@ $(document).ready(function() {
   var styles;
   var marker;
   var polylineData;
+  var poly;
+  var encodedPoly;
 
   // sortBy implementation for use later to sort segments array
   Array.prototype.sortBy = function (prop) {
@@ -25,14 +27,11 @@ $(document).ready(function() {
   })
   .done(function(data) {
     polylineData = data.map.summary_polyline;
+
     // add google map
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         // refactor to dynamicly setting center and zoom value based on route
-        // size: '400x400',
-        // path: {weight: 3, color: 'orange', enc: polylineData},
-        // sensor: false,
-        // key: 'AIzaSyCF17HDx69mMHw_UaruwHgOK9nojBCF28g'
         center: {lat: 37.7749295, lng: -122.4194155},
         zoom: 12
       });
@@ -49,6 +48,18 @@ $(document).ready(function() {
         }]
       }];
       map.setOptions({styles: styles});
+
+      // create polyline
+      encodedPoly = google.maps.geometry.encoding.decodePath(polylineData);
+      poly = new google.maps.Polyline({
+            path: encodedPoly,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+
+      poly.setMap(map);
     }
     initMap();
 
@@ -58,12 +69,13 @@ $(document).ready(function() {
 
     for (var i = 0; i < segments.length; i++) {
       // refactor if statement to not be hard coded, but instead be first, middle and last lat?
-      if (i && i % 2 === 0) { 
-        segmentsArr.push({lat: segments[i].end_latlng[0], lng: segments[i].end_latlng[1]});
+      if (i && i % 3 === 0) { 
+        segmentsArr.push({lat: segments[i].start_latlng[0], lng: segments[i].start_latlng[1]});
       }
     }
     // sort segments array
     sortedSegments = segmentsArr.sortBy('lat');
+    
     
     // AJAX call to weather API
     $.each(sortedSegments, function(i, value) {
@@ -79,7 +91,7 @@ $(document).ready(function() {
       .fail(function(err){
         console.log("FAIL", err)
       }); 
-
+    
     function createWeatherIcon(iconCode, value) {
       weatherIcon = "http://openweathermap.org/img/w/" + iconCode + ".png";
       marker = new google.maps.Marker({
