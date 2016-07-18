@@ -1,24 +1,40 @@
 $(document).ready(function() {
   var map;
-  var myLatLng;
+  var segmentsArr;
+  var sortedSegments;
   var segments;
   var iconCode;
   var weatherIcon;
   var styles;
   var marker;
+  var polylineData;
 
-  // Ajax call to Strava API
+  // sortBy implementation for use later to sort segments array
+  Array.prototype.sortBy = function (prop) {
+    return this.slice(0).sort(function (a,b) {
+      return (a[prop] > b[prop]) ? 1 : (a[prop] < b[prop]) ? -1 : 0;
+    });
+  }
+
+  // Ajax call to Strava routes API
   $.ajax({
     method: "GET",
-    url: "https://www.strava.com/api/v3/routes/5775778?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
+    // refactor route_id to not be hard coded
+    url: "https://www.strava.com/api/v3/routes/5775019?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
     dataType: 'jsonp'
   })
   .done(function(data) {
+    polylineData = data.map.summary_polyline;
     // add google map
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
+        // refactor to dynamicly setting center and zoom value based on route
+        // size: '400x400',
+        // path: {weight: 3, color: 'orange', enc: polylineData},
+        // sensor: false,
+        // key: 'AIzaSyCF17HDx69mMHw_UaruwHgOK9nojBCF28g'
         center: {lat: 37.7749295, lng: -122.4194155},
-        zoom: 10
+        zoom: 12
       });
 
       // change map color+style
@@ -36,18 +52,21 @@ $(document).ready(function() {
     }
     initMap();
 
-    // add marker as a weather icon
+    // add weather icon marker to map
     segments = data.segments;
-    myLatLng = [];
+    segmentsArr = [];
 
     for (var i = 0; i < segments.length; i++) {
-      if (i && i % 15 === 0) {
-        myLatLng.push({lat: data.segments[i].end_latlng[0], lng: data.segments[i].end_latlng[1]});
+      // refactor if statement to not be hard coded, but instead be first, middle and last lat?
+      if (i && i % 2 === 0) { 
+        segmentsArr.push({lat: segments[i].end_latlng[0], lng: segments[i].end_latlng[1]});
       }
     }
-
-    $.each(myLatLng, function(i, value) {
-      // AJAX call to weather API
+    // sort segments array
+    sortedSegments = segmentsArr.sortBy('lat');
+    
+    // AJAX call to weather API
+    $.each(sortedSegments, function(i, value) {
       $.ajax({
         method: "GET",
         url: "http://api.openweathermap.org/data/2.5/weather?lat=" + value.lat + "&lon=" + value.lng + "&weather=icon&APPID=12fa1a4d7a570fc0ffd5c2895988482a", 
