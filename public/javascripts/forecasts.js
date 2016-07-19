@@ -10,6 +10,7 @@ $(document).ready(function() {
   var polylineData;
   var poly;
   var encodedPoly;
+  var infoWindow;
 
   // sortBy implementation for use later to sort segments array
   Array.prototype.sortBy = function (prop) {
@@ -17,6 +18,12 @@ $(document).ready(function() {
       return (a[prop] > b[prop]) ? 1 : (a[prop] < b[prop]) ? -1 : 0;
     });
   }
+
+  // create new instance of InfoWindow
+  infoWindow = new google.maps.InfoWindow({
+    content: 'Hello World!',
+    map: map
+  });
 
   // Ajax call to Strava routes API
   $.ajax({
@@ -76,7 +83,6 @@ $(document).ready(function() {
     // sort segments array
     sortedSegments = segmentsArr.sortBy('lat');
     
-    
     // AJAX call to weather API
     $.each(sortedSegments, function(i, value) {
       $.ajax({
@@ -92,22 +98,28 @@ $(document).ready(function() {
         console.log("FAIL", err)
       }); 
     
-    function createWeatherIcon(iconCode, value) {
-      weatherIcon = "http://openweathermap.org/img/w/" + iconCode + ".png";
-      marker = new google.maps.Marker({
-        position: {lat: value.lat, lng: value.lng},
-        map: map,
-        icon: weatherIcon
-      }); 
-    }
+      function createWeatherIcon(iconCode, value) {
+        weatherIcon = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        marker = new google.maps.Marker({
+          position: {lat: value.lat, lng: value.lng},
+          map: map,
+          icon: weatherIcon
+        }); 
 
+        // show infowindow on mouse-over weathericon
+        marker.addListener('mouseover', function() {
+          infoWindow.open(map, this);
+        });
+        // hide infowindow on mouses-out
+        marker.addListener('mouseout', function() {
+          infoWindow.close();
+        });
+
+      }
     });
-  
-
   })
   .fail(function(err){
     console.log("FAIL", err)
   });
-
 
 });
