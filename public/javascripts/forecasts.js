@@ -11,6 +11,9 @@ $(document).ready(function() {
   var poly;
   var encodedPoly;
   var infoWindow;
+  var windSpeed;
+  var humidity;
+  var weatherDescription;
 
   // sortBy implementation for use later to sort segments array
   Array.prototype.sortBy = function (prop) {
@@ -21,7 +24,6 @@ $(document).ready(function() {
 
   // create new instance of InfoWindow
   infoWindow = new google.maps.InfoWindow({
-    content: 'Hello World!',
     map: map
   });
 
@@ -29,7 +31,7 @@ $(document).ready(function() {
   $.ajax({
     method: "GET",
     // refactor route_id to not be hard coded
-    url: "https://www.strava.com/api/v3/routes/5775019?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
+    url: "https://www.strava.com/api/v3/routes/5775778?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
     dataType: 'jsonp'
   })
   .done(function(data) {
@@ -76,8 +78,8 @@ $(document).ready(function() {
 
     for (var i = 0; i < segments.length; i++) {
       // refactor if statement to not be hard coded, but instead be first, middle and last lat?
-      if (i && i % 3 === 0) { 
-        segmentsArr.push({lat: segments[i].start_latlng[0], lng: segments[i].start_latlng[1]});
+      if (i && i % 10 === 0) { 
+        segmentsArr.push({lat: segments[i].end_latlng[0], lng: segments[i].end_latlng[1]});
       }
     }
     // sort segments array
@@ -91,14 +93,17 @@ $(document).ready(function() {
         dataType: 'jsonp'
       })
       .done(function(data) {
+        weatherDescription = data.weather[0].description;
+        humidity = data.main.humidity;
+        windSpeed = data.wind.speed;
         iconCode = data.weather[0].icon;
-        createWeatherIcon(iconCode, value);
+        createWeatherIcon(iconCode, value, windSpeed, weatherDescription, humidity);
       })
       .fail(function(err){
         console.log("FAIL", err)
       }); 
     
-      function createWeatherIcon(iconCode, value) {
+      function createWeatherIcon(iconCode, value, windSpeed, weatherDescription, humidity) {
         weatherIcon = "http://openweathermap.org/img/w/" + iconCode + ".png";
         marker = new google.maps.Marker({
           position: {lat: value.lat, lng: value.lng},
@@ -109,6 +114,7 @@ $(document).ready(function() {
         // show infowindow on mouse-over weathericon
         marker.addListener('mouseover', function() {
           infoWindow.open(map, this);
+          infoWindow.setContent('Description: ' + weatherDescription + '<br>' + 'Wind Speed: ' + windSpeed + '<br>' + 'Humidity: ' + humidity);
         });
         // hide infowindow on mouses-out
         marker.addListener('mouseout', function() {
