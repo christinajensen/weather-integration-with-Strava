@@ -20,12 +20,12 @@
   clear: both;
 }
 
-.hero-img {
+/*.hero-img {
   background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0)), url('/images/women-cycling.jpg') no-repeat;
   background-size: cover;
   position: relative;
   height: 95vh;
-}
+}*/
 
 header {
   position: fixed;
@@ -101,15 +101,18 @@ header {
 article h1 {
   padding-top: 40px;
   text-align: center;
-  background-color: rgb(239, 239, 239);
+  /*background-color: rgb(239, 239, 239);*/
 }
 
 article section {
   padding-top: 10px;
   text-align: center;
-  background-color: rgb(239, 239, 239);
-  height: 600px;
+  /*background-color: rgb(239, 239, 239);*/
 } 
+
+#about, #contact {
+  height: 300px;
+}
 
 footer {
   height: 200px;

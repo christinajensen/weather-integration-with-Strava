@@ -31,7 +31,7 @@ $(document).ready(function() {
   $.ajax({
     method: "GET",
     // refactor route_id to not be hard coded
-    url: "https://www.strava.com/api/v3/routes/5775778?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
+    url: "https://www.strava.com/api/v3/routes/5787957?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
     dataType: 'jsonp'
   })
   .done(function(data) {
@@ -46,16 +46,7 @@ $(document).ready(function() {
       });
 
       // change map color+style
-      styles = [{
-        "featureType": "all",
-        "elementType": "all",
-        "stylers": [{
-          "saturation": -100
-        },
-        {
-          "gamma": 0.5
-        }]
-      }];
+      styles = [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]
       map.setOptions({styles: styles});
 
       // create polyline
@@ -63,7 +54,7 @@ $(document).ready(function() {
       poly = new google.maps.Polyline({
             path: encodedPoly,
             geodesic: true,
-            strokeColor: '#FF0000',
+            strokeColor: '#ff3300',
             strokeOpacity: 1.0,
             strokeWeight: 2
           });
@@ -78,7 +69,7 @@ $(document).ready(function() {
 
     for (var i = 0; i < segments.length; i++) {
       // refactor if statement to not be hard coded, but instead be first, middle and last lat?
-      if (i && i % 10 === 0) { 
+      if (i && i % 5 === 0) { 
         segmentsArr.push({lat: segments[i].end_latlng[0], lng: segments[i].end_latlng[1]});
       }
     }
@@ -102,7 +93,7 @@ $(document).ready(function() {
       .fail(function(err){
         console.log("FAIL", err)
       }); 
-    
+
       function createWeatherIcon(iconCode, value, windSpeed, weatherDescription, humidity) {
         weatherIcon = "http://openweathermap.org/img/w/" + iconCode + ".png";
         marker = new google.maps.Marker({
@@ -114,13 +105,17 @@ $(document).ready(function() {
         // show infowindow on mouse-over weathericon
         marker.addListener('mouseover', function() {
           infoWindow.open(map, this);
-          infoWindow.setContent('Description: ' + weatherDescription + '<br>' + 'Wind Speed: ' + windSpeed + '<br>' + 'Humidity: ' + humidity);
+          infoWindow.setContent('<div id="iw-container">' + 
+            '<div class="iw-title">' + 'Real Time Weather Info' + '</div>' + 
+            '<div class="iw-content">' + 'Description: ' + weatherDescription + '<br>' + 
+            'Wind Speed: ' + windSpeed + '<br>' + 
+            'Humidity: ' + humidity + '</div>' + 
+            '</div>');
         });
         // hide infowindow on mouses-out
         marker.addListener('mouseout', function() {
           infoWindow.close();
         });
-
       }
     });
   })

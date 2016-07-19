@@ -12,21 +12,29 @@ block content
     nav#top-nav
       ul
         li
-          a(href="#") HOME
+          a(href="/") HOME
         li
           a(href="/forecasts") TRY IT OUT!
         li#logo
           a(href="/") 
             h1 dryride
         li 
-          a(href="#") ABOUT
+          a(href="#about") ABOUT
         li
-          a(href="/") CONTACT
+          a(href="#contact") CONTACT
   div.wrapper
     section.hero-img
-    article.article
-      h1 Some Header
+      video(width="100%" height="auto" autoplay muted)
+        source(src="cycling-video.mp4" type="video/mp4")
+    article#about
+      h1 About
       section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod officia, minima molestias, voluptates pariatur rerum consectetur, impedit atque eos culpa, iste asperiores quibusdam tenetur quasi vitae illum libero saepe neque.
+    article#contact
+      h1 Contact
+      section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod officia, minima molestias, voluptates pariatur rerum consectetur, impedit atque eos culpa, iste asperiores quibusdam tenetur quasi vitae illum libero saepe neque.
+    article
+      section
+        img(src="/images/lonely-rider.jpg" width="100%" height="auto" alt="Road Cyclist")
     footer
       p #[small &copy Copyright 2016 | Site by Christina Jensen]
         //- #[small Proudly Made in San Francisco, CA]

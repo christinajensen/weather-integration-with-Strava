@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  window.addEventListener("hashchange", function() { scrollBy(0, -70) })
+
   var heroImgBottom = $('.hero-img').offset().top
 
   $(window).on('scroll', function() {
@@ -15,6 +17,7 @@ $(document).ready(function() {
       $('#logo').removeClass('past-heroImg');
     }
   })
+
 
 
 
