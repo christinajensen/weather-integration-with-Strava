@@ -12,20 +12,23 @@ block content
     nav#top-nav
       ul
         li
-          a(href="/") HOME
+          a(href="#about") ABOUT
         li
           a(href="/forecasts") TRY IT OUT!
         li#logo
           a(href="/") 
             h1 dryride
         li 
-          a(href="#about") ABOUT
-        li
           a(href="#contact") CONTACT
+        li
+          a(href="/users/auth/strava") LOGIN WITH STRAVA
   div.wrapper
     section.hero-img
-      video(width="100%" height="auto" autoplay muted)
+      video(width="100%" height="auto" autoplay muted loop)
         source(src="cycling-video.mp4" type="video/mp4")
+      h1#hero-header LET'S GO FOR A RIDE!
+      p#hero-slogan Optimize your ride. Check out the weather conditions on you favorite routes.
+      a(href="/forecasts")#hero-button Check Weather
     article#about
       h1 About
       section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod officia, minima molestias, voluptates pariatur rerum consectetur, impedit atque eos culpa, iste asperiores quibusdam tenetur quasi vitae illum libero saepe neque.

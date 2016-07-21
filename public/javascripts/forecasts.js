@@ -31,7 +31,7 @@ $(document).ready(function() {
   $.ajax({
     method: "GET",
     // refactor route_id to not be hard coded
-    url: "https://www.strava.com/api/v3/routes/5787957?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
+    url: "https://www.strava.com/api/v3/routes/5775778?access_token=758e69afaa0c7dd7395146ca02b1dc51d3c24880", 
     dataType: 'jsonp'
   })
   .done(function(data) {
@@ -42,7 +42,7 @@ $(document).ready(function() {
       map = new google.maps.Map(document.getElementById('map'), {
         // refactor to dynamicly setting center and zoom value based on route
         center: {lat: 37.7749295, lng: -122.4194155},
-        zoom: 12
+        zoom: 13
       });
 
       // change map color+style
@@ -69,7 +69,7 @@ $(document).ready(function() {
 
     for (var i = 0; i < segments.length; i++) {
       // refactor if statement to not be hard coded, but instead be first, middle and last lat?
-      if (i && i % 5 === 0) { 
+      if (i && i % 3 === 0) { 
         segmentsArr.push({lat: segments[i].end_latlng[0], lng: segments[i].end_latlng[1]});
       }
     }

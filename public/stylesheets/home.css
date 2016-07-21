@@ -20,12 +20,42 @@
   clear: both;
 }
 
-/*.hero-img {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0)), url('/images/women-cycling.jpg') no-repeat;
-  background-size: cover;
-  position: relative;
-  height: 95vh;
-}*/
+#hero-header { 
+   position: absolute; 
+   top: 220px;
+   left: 395px;
+   width: 100%; 
+   color: #fff;
+   font-size: 50px;
+}
+
+#hero-slogan {
+  position: absolute; 
+  top: 300px;
+  left: 330px;
+  width: 100%; 
+  color: #fff;
+  font-size: 18px;
+}
+
+#hero-button {
+  position: absolute; 
+  top: 380px;
+  left: 550px;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+#hero-button:hover {
+  opacity: 1;
+}
 
 header {
   position: fixed;
