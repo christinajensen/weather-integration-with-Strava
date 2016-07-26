@@ -1,0 +1,59 @@
+/*-----navbar----*/
+
+#top-nav.past-heroImg{
+  background-color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  transition: all 0.25s ease;
+}
+
+#top-nav {
+  margin: auto;
+  text-align: center;
+  padding-top: 60px;
+}
+
+#top-nav ul {
+  list-style-type: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  /*border: 1px solid black;*/
+}
+
+#top-nav ul li {
+  float: left;
+  margin: 20px;
+  /*border: 1px solid black;*/
+}
+
+#top-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#top-nav ul li a.past-heroImg {
+  color: black;
+}
+
+#top-nav ul li:hover a {
+  color: lightgrey;
+}
+
+#top-nav.past-heroImg ul li:hover a {
+  color: grey;
+}
+
+/*------logo-----*/
+
+#logo h1 {
+  text-align: center;
+  font-size: 40px;
+  margin: 0;
+  margin-top: -20px;
+}
+
+#logo.past-heroImg {
+  color: black;
+}

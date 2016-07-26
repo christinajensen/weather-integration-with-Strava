@@ -4,31 +4,20 @@ block head
   title Home
 
 block css
-  link(rel="stylesheet" href="/stylesheets/home.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
+  link(rel="stylesheet" href="/stylesheets/home.css")  
   link(href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css')
 
 block content
-  header
-    nav#top-nav
-      ul
-        li
-          a(href="#about") ABOUT
-        li
-          a(href="/forecasts") TRY IT OUT!
-        li#logo
-          a(href="/") 
-            h1 dryride
-        li 
-          a(href="#contact") CONTACT
-        li
-          a(href="/users/auth/strava") LOGIN WITH STRAVA
+  include ./_navbar.jade
+
   div.wrapper
     section.hero-img
       video(width="100%" height="auto" autoplay muted loop)
         source(src="cycling-video.mp4" type="video/mp4")
       h1#hero-header LET'S GO FOR A RIDE!
       p#hero-slogan Optimize your ride. Check out the weather conditions on you favorite routes.
-      a(href="/forecasts")#hero-button Check Weather
+      a(href="/users/#{user_id}/forecasts")#hero-button Check Weather
     article#about
       h1 About
       section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod officia, minima molestias, voluptates pariatur rerum consectetur, impedit atque eos culpa, iste asperiores quibusdam tenetur quasi vitae illum libero saepe neque.
@@ -44,3 +33,4 @@ block content
 
 block scripts
   script(src="/javascripts/home.js")
+  script(src="/javascripts/navbar.js")

@@ -4,12 +4,26 @@ block head
   title Forecast
 
 block css
-  link(rel="stylesheet", href="/stylesheets/forecasts.css")
+  link(rel="stylesheet" href="/stylesheets/forecasts.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
+  link(rel="stylesheet" href="/stylesheets/home.css")
 
 block content
+  include ../_navbar.jade
+
+
   div.wrapper
-    h1 What's the weather like today? 
-    div(id="map")
+    article.map-wrapper
+      h1 Real Time Weather for Your Chosen Ride
+      div(id="map")
+      form.route-form(href="/users/#{user_id}/forecasts" method="GET")
+        label.form-label Name of Route
+        input.form-input(type="text" placeholder="Enter name of today's route" required autofocus) 
+        input(type="submit" value="Get Weather!")
+        input.clear(type="reset" value="Reset")
+  footer
+    p #[small &copy Copyright 2016 | Site by Christina Jensen]
+        //- #[small Proudly Made in San Francisco, CA]
 
 block scripts
   script.async.defer(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF17HDx69mMHw_UaruwHgOK9nojBCF28g&libraries=geometry")

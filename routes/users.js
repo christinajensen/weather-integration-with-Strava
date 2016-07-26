@@ -36,7 +36,7 @@ router.get('/auth/strava',
 router.get('/auth/strava/callback', 
   passport.authenticate('strava', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/forecasts');
+    res.redirect(`/users/${req.user.id}/forecasts`);
   }); 
 
 router.get('/logout', function(req, res){

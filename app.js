@@ -31,12 +31,12 @@ app.use(flash());
 
 // home page
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('home', {"user_id": req.session.passport.user});
 });
 
 // routes
 app.use('/users', routes.users);
-app.use('/forecasts', routes.forecasts);
+app.use('/users/:user_id/forecasts', routes.forecasts);
 
 // error page
 app.get('*', (req, res) => {

@@ -5,16 +5,20 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;;
+  /*border: 1px solid black;*/
 }
 
 .wrapper {
-  margin-top: 35px;
+  margin-top: 50px;
   margin-left: 30px;
   margin-right: 30px;
+  background-color: #FBF7EE;
 }
 
 #map {
-  height: 500px;
+  height: 650px;
+  width: 50%;
+  float: right;
 }
 
 .iw-title {
@@ -22,7 +26,6 @@
   padding: 10px;
   margin-top: 0;
   margin-left: 0;
-  /*background-color: #ff3300;*/
   color: black;
 }
 
@@ -34,3 +37,68 @@
   margin: 1px;
   padding: 10px;
 }
+
+.map-wrapper h1 {
+  float: left;
+  margin-top: 50px;
+}
+
+h1 {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+/*--------form--------*/
+
+.route-form {
+  float: left;
+  margin-top: 150px;
+  margin-left: 120px;
+  text-align: center;
+}
+
+.form-label {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  display: block;
+}
+
+input {
+  width: 100%;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  text-align: center;
+  border: none;
+  color: white;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 30%;
+}
+
+input[type=reset] {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 30%;
+}
+
