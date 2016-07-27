@@ -51,25 +51,25 @@ h1 {
 /*--------form--------*/
 
 .route-form {
-  float: left;
-  margin-top: 150px;
-  margin-left: 120px;
-  text-align: center;
+  /*float: left;*/
+  /*margin-top: 150px;*/
+  margin-left: 150px;
+  /*text-align: center;*/
 }
 
-.form-label {
+/*.form-label {
   width: 100%;
   text-align: center;
   font-weight: bold;
   font-size: 30px;
   display: block;
-}
+}*/
 
 input {
   width: 100%;
 }
 
-input[type=text] {
+/*input[type=text] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -89,7 +89,7 @@ input[type=submit] {
   margin: 4px 2px;
   cursor: pointer;
   width: 30%;
-}
+}*/
 
 input[type=reset] {
   background-color: red;
@@ -99,6 +99,12 @@ input[type=reset] {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
-  width: 30%;
+  width: 20%;
+}
+
+#dropdown {
+  margin-top: 150px;
+  width: 25%;
+  margin-left: 150px;
 }
 

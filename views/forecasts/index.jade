@@ -16,10 +16,12 @@ block content
     article.map-wrapper
       h1 Real Time Weather for Your Chosen Ride
       div(id="map")
+      select#dropdown
+        option(value="---Select---") --- Please Select ---
       form.route-form(href="/users/#{user_id}/forecasts" method="GET")
-        label.form-label Name of Route
-        input.form-input(type="text" placeholder="Enter name of today's route" required autofocus) 
-        input(type="submit" value="Get Weather!")
+        //- label.form-label Name of Route
+        //- input.form-input(type="text" placeholder="Enter name of today's route" required autofocus) 
+        //- input(type="submit" value="Get Weather!")
         input.clear(type="reset" value="Reset")
   footer
     p #[small &copy Copyright 2016 | Site by Christina Jensen]

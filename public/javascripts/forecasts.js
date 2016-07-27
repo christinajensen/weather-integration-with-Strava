@@ -15,7 +15,7 @@ $(document).ready(function() {
   var humidity;
   var weatherDescription;
   var routeArr;
-  var inputValue;
+  var value;
 
   // getting the user's id from the url
   var pathName = location.pathname;
@@ -37,7 +37,13 @@ $(document).ready(function() {
     routeArr = data.map(function(el) {
       return {'route_id': el.id, 'route_name': el.name.toLowerCase()};
     });
-    // console.log(routeArr)
+    // populating dropdown menu
+    for (var i = 0; i < routeArr.length; i++) {
+      $('#dropdown').append($('<option>',  {
+        value: routeArr[i].route_name,
+        text: routeArr[i].route_name
+      }));
+    }
   })
   .fail(function(err){
     console.log("FAIL", err)
@@ -71,16 +77,14 @@ $(document).ready(function() {
    
   // defining methods for clearing markers and polylines
   google.maps.Marker.prototype.markers = new Array();
-
   google.maps.Marker.prototype.clearMarkers = function() {
-      for(var i=0; i<this.markers.length; i++){
+      for(var i = 0; i < this.markers.length; i++){
           this.markers[i].setMap(null);
       }
       this.markers = new Array();
   };
 
   google.maps.Polyline.prototype.lines = new Array();
-
   google.maps.Polyline.prototype.clearLines = function() {
       for(var i=0; i<this.lines.length; i++){
           this.lines[i].setMap(null);
@@ -92,15 +96,14 @@ $(document).ready(function() {
   $(".clear").on("click", function(e){
     google.maps.Marker.prototype.clearMarkers();
     google.maps.Polyline.prototype.clearLines();
-    // inputValue = "";
   })
 
-  $('form').submit(function(e) {
-    e.preventDefault();
-    inputValue = $('.form-input').val();
+  // dropdown
+  $('#dropdown').change(function(e) {
+    value = $('#dropdown option:selected').val();
 
     for (var i = 0; i < routeArr.length; i++) {
-      if (routeArr[i].route_name === inputValue.toLowerCase()) {
+      if (routeArr[i].route_name === value.toLowerCase()) {
     
         // Ajax call to Strava routes API
         $.ajax({
